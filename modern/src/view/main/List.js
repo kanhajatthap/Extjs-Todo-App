@@ -30,6 +30,10 @@ Ext.define('MyApp.view.main.List', {
         text: 'Phone',
         dataIndex: 'phone',
         width: 150 
+    }, {
+        text: 'department',
+        dataIndex: 'department',
+        width: 150 
     }],
 
     listeners: {
