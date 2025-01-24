@@ -1,6 +1,3 @@
-/**
- * This view is an example list of people.
- */
 Ext.define('MyApp.view.main.List', {
     extend: 'Ext.grid.Panel',
     xtype: 'mainlist',
@@ -22,44 +19,44 @@ Ext.define('MyApp.view.main.List', {
         { text: 'Department', dataIndex: 'department', flex: 1 }
     ],
 
-    renderTo:Ext.getBody(),
     selModel: {
-        selType: 'checkboxmodel', // Correct key and value
-        mode: 'SINGLE', // Use 'SINGLE' or 'MULTI' for selection mode
+        selType: 'checkboxmodel',
+        mode: 'SINGLE',
         listeners: {
-            select: function (selModel, record, index, eOpts) {
-                console.log('Selected:', record.getData());
-            }
+            select: 'onGridSelect',
+            deselect: 'onGridDeselect'
         }
     },
 
-
-    tbar:[
+    tbar: [
         {
             xtype: 'button',
-            iteamId: 'add',
+            itemId: 'add',
             text: 'Add',
             iconCls: 'x-fa fas fa-plus',
-            reference: 'btnadd',
+            reference: 'btnAdd',
             handler: 'addPopup'
         },
         {
             xtype: 'button',
-            iteamId: 'edit',
+            itemId: 'edit',
             text: 'Edit',
             iconCls: 'x-fa fas fa-edit',
-            reference: 'btnedit',
+            reference: 'btnEdit',
             handler: 'updatePopup',
-            disabled:true,
+            disabled: true
         },
         {
             xtype: 'button',
-            iteamId: 'delete',
+            itemId: 'delete',
             text: 'Delete',
             iconCls: 'x-fa fas fa-trash',
-            reference: 'btndelete',
+            reference: 'btnDelete',
             handler: 'deletePopup',
-            disabled:true,
+            disabled: true
         }
-    ]
+    ],
+    
+
+    reference: 'personnelGrid'
 });

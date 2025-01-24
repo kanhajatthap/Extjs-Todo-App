@@ -1,19 +1,29 @@
-/**
- * This class is the controller for the main view for the application. It is specified as
- * the "controller" of the Main view class.
- */
 Ext.define('MyApp.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record) {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+    onGridSelect: function (selModel, record, index, eOpts) {
+        this.lookupReference('btnEdit').setDisabled(false);
+        this.lookupReference('btnDelete').setDisabled(false);
     },
 
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
+    onGridDeselect: function (selModel, record, index, eOpts) {
+        if (selModel.getSelection().length === 0) {
+            this.lookupReference('btnEdit').setDisabled(true);
+            this.lookupReference('btnDelete').setDisabled(true);
         }
+    },
+
+    addPopup: function () {
+        // Add functionality
+    },
+
+    updatePopup: function () {
+        // Edit functionality
+    },
+
+    deletePopup: function () {
+        // Delete functionality
     }
 });
